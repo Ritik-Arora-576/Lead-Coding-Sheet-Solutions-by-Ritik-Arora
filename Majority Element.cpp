@@ -1,4 +1,5 @@
 // Question Link: https://leetcode.com/problems/majority-element/
+// Moore's Voting Algorithm
 // TC: O(n)
 // SC: O(1)
 
