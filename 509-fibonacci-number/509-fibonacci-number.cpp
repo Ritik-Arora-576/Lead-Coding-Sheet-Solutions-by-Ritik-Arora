@@ -2,8 +2,8 @@ class Solution {
 public:
     int fib(int n) {
         /*
-            Space Complexity: O(1)
-            Time Complexity: O(n)
+            SC: O(1)
+            TC: O(n)
         */
         
         if(n<2) return n;
