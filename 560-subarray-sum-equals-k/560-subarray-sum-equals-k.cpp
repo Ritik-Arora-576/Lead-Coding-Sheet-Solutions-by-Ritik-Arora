@@ -1,5 +1,6 @@
 // TC: O(N)
 // SC: O(N)
+// Prefix Sum Map Approach
 
 class Solution {
 public:
