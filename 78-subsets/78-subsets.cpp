@@ -1,5 +1,6 @@
 // TC: O(2^n)
 // SC: O(n^2)
+// Backtracking Solution
 
 class Solution {
     void storeSubset(vector<vector<int>> &ans,vector<int> &temp, int i, vector<int> &nums)
