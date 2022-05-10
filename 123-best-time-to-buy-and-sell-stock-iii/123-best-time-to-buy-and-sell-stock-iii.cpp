@@ -1,30 +1,24 @@
 // TC: O(N)
-// SC: O(N)
-// 1-D DP approach
+// SC: O(1)
 
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        vector<int> dp;
-        int n=prices.size();
-        dp.push_back(0);
-        int minPrice=prices[0];
+        int profit1=0;
+        int minPrice1=INT_MAX;
+        int profit2=0;
+        int minPrice2=INT_MAX;
         
-        for(int i=1;i<n;i++)
+        for(int data:prices)
         {
-            minPrice=min(minPrice,prices[i]);
-            dp.push_back(max(dp[i-1],prices[i]-minPrice));
+            minPrice1=min(minPrice1,data);
+            profit1=max(profit1,data-minPrice1);
+            
+            // effective Price that the trader should pay after earning the profit from one transaction
+            minPrice2=min(minPrice2,data-profit1);
+            profit2=max(profit2,data-minPrice2);
         }
         
-        int maxPrice=prices[n-1];
-        int ans=dp[n-1];
-        
-        for(int i=n-2;i>=0;i--)
-        {
-            maxPrice=max(maxPrice,prices[i]);
-            ans=max(ans,dp[i]+(maxPrice-prices[i]));
-        }
-        
-        return ans;
+        return profit2;
     }
 };
