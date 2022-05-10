@@ -11,10 +11,11 @@ public:
         
         for(int data:prices)
         {
+            // calculating the maximum profit earned by first transaction
             minPrice1=min(minPrice1,data);
             profit1=max(profit1,data-minPrice1);
             
-            // effective Price that the trader should pay after earning the profit from one transaction
+            // effective Price that the trader should pay after earning the profit from first transaction
             minPrice2=min(minPrice2,data-profit1);
             profit2=max(profit2,data-minPrice2);
         }
