@@ -4,21 +4,13 @@
 class Solution {
 public:
     vector<int> countBits(int n) {
-        vector<int> ans;
+        vector<int> dp(n+1);
+        dp[0]=0;
+        if(n==0) return dp;
+        dp[1]=1;
         
-        for(int i=0;i<=n;i++)
-        {
-            int temp=i;
-            int count=0;
-            
-            while(temp)
-            {
-                temp&=(temp-1);
-                count++;
-            }
-            ans.push_back(count);
-        }
+        for(int i=2;i<=n;i++) dp[i]=dp[i/2]+(i%2?1:0);
         
-        return ans;
+        return dp;
     }
 };
