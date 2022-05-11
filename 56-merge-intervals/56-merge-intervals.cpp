@@ -1,3 +1,6 @@
+// TC: O(NlogN)
+// SC: O(N)
+
 class Solution {
     static bool compare(vector<int> &v1,vector<int> &v2) {return v1[0]<v2[0];}
     
