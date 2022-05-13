@@ -10,29 +10,31 @@ class Solution {
 public:
     // 2D DP approach
     // TC: O(k*prices.size())
-    // SC: O(k*prices.size())
+    // SC: O(k)
     
     int maxProfit(int k, vector<int>& prices) {
-        int dp[prices.size()+1][k+1][2];
+        int dp[2][k+1][2];
         
         for(int i=0;i<=k;i++)
         {
-            dp[prices.size()][i][0]=0;
-            dp[prices.size()][i][1]=0;
-        }
-        
-        for(int i=0;i<=prices.size();i++)
-        {
-            dp[i][0][0]=0;
-            dp[i][0][1]=1;
+            dp[1][i][0]=0;
+            dp[1][i][1]=0;
+            dp[0][i][0]=0;
+            dp[0][i][1]=0;
         }
         
         for(int i=prices.size()-1;i>=0;i--)
         {
             for(int j=1;j<=k;j++)
             {
-                dp[i][j][0]=max(dp[i+1][j][1]-prices[i],dp[i+1][j][0]);
-                dp[i][j][1]=max(dp[i+1][j-1][0]+prices[i],dp[i+1][j][1]);
+                dp[0][j][0]=max(dp[1][j][1]-prices[i],dp[1][j][0]);
+                dp[0][j][1]=max(dp[1][j-1][0]+prices[i],dp[1][j][1]);
+            }
+            
+            for(int j=1;j<=k;j++)
+            {
+                dp[1][j][0]=dp[0][j][0];
+                dp[1][j][1]=dp[0][j][1];
             }
         }
         
