@@ -1,3 +1,7 @@
+// 1-D DP + Histogram Max rectangle area solution
+// TC: O(row*col)
+// SC: O(col)
+
 class Solution {
     int max(int a,int b) {return a>b?a:b;}
     
