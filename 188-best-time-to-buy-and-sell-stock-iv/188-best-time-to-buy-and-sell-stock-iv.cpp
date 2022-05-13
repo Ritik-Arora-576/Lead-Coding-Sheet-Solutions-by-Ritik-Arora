@@ -8,7 +8,7 @@ class Solution {
     }
     
 public:
-    // 2D DP approach
+    // 1D DP approach
     // TC: O(k*prices.size())
     // SC: O(k)
     
