@@ -1,6 +1,6 @@
 // 1D DP Approach
-// TC: O(N^2)
-// SC: O(N)
+// TC: O(n*m)
+// SC: O(n)
 
 #define mod 2000000000
 class Solution {
@@ -9,14 +9,9 @@ public:
         vector<int> dp(n,1);
         
         for(int i=m-2;i>=0;i--)
-        {
-            int temp=1;
             for(int j=n-2;j>=0;j--)
-            {
-                dp[j]=(dp[j]%mod+temp%mod)%mod;
-                temp=dp[j];
-            }
-        }
+                dp[j]=(dp[j]%mod+dp[j+1]%mod)%mod;
+        
         return dp[0];
     }
 };
