@@ -1,3 +1,6 @@
+// TC: O(max(num1.length(),num2.length()))
+// SC: O(max(num1.length(),num2.length()))
+
 class Solution {
 public:
     string addStrings(string num1, string num2) {
