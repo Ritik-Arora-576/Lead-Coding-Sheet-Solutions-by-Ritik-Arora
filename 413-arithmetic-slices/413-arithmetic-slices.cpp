@@ -1,3 +1,6 @@
+// TC: O(N)
+// SC: O(1)
+
 class Solution {
 public:
     int numberOfArithmeticSlices(vector<int>& nums) {
