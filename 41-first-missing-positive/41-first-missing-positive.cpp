@@ -12,7 +12,7 @@ public:
         for(int i=0;i<nums.size();i++)
             if(nums[i]<1 or nums[i]>nums.size()) nums[i]=1;
         
-        // now every element is within range [1,n]
+        // now every element is within range [1,n] and mark (abs(nums[i])-1)th element to negetive if not 
         for(int i=0;i<nums.size();i++)
             if(nums[abs(nums[i])-1]>0) nums[abs(nums[i])-1]*=-1;
         
