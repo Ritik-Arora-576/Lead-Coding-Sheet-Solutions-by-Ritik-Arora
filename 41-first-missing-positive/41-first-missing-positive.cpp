@@ -1,20 +1,23 @@
-// TC: O(N)
-// SC: O(1)
-
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        for(int i=0;i<nums.size();i++)
-        {
-            // check if the value of element within the range of an array
-            // If yes then check whether an element present at ith index is present at right position or not and also the element at nums[i]-1th index
-            // If not then swap it with an element present at nums[i]-1th index 
-            while(nums[i]>0 and nums[i]<=nums.size() and nums[i]!=i+1 and nums[nums[i]-1]!=nums[i])
-                swap(nums[i],nums[nums[i]-1]);
-        }
+        // firstly, check if 1 present or not
+        bool status=false;
+        for(int data:nums) if(data==1) status=true;
+        
+        // if 1 is present then mark the element which is out of range i.e Range=[1,n] to 1
+        // otherwise it's obvious that our answer should be 1 if 1 is not present
+        if(!status) return 1;
         
         for(int i=0;i<nums.size();i++)
-            if(nums[i]!=i+1) return i+1;
+            if(nums[i]<1 or nums[i]>nums.size()) nums[i]=1;
+        
+        // now every element is within range [1,n]
+        for(int i=0;i<nums.size();i++)
+            if(nums[abs(nums[i])-1]>0) nums[abs(nums[i])-1]*=-1;
+        
+        // now check which position is positive that would be an answer otherwise n+1 would be an answer
+        for(int i=0;i<nums.size();i++) if(nums[i]>0) return i+1;
         
         return nums.size()+1;
     }
