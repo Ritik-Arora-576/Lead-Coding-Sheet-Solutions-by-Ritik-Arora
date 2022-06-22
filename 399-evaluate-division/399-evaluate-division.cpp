@@ -1,3 +1,6 @@
+// TC: O(q*e)
+// SC: O(e)
+
 class Solution {
     bool dfs(unordered_map<string,vector<pair<string,double>>> &m,unordered_set<string> &s,double &ans,string &src,string &dest,double temp)
     {
