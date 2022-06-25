@@ -1,4 +1,4 @@
-// TC: O(N)
+// TC: O(N^2)
 // SC: O(N)
 // 1-D DP Approach
 
