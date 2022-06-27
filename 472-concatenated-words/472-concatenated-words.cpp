@@ -2,18 +2,24 @@
 // SC: O(N)
 
 class Solution {
-    bool isConcatenated(string &str,unordered_set<string> &s,int k)
+    bool isConcatenated(string &str,unordered_set<string> &s)
     {
-        if(k==str.length()) return true;
+        vector<int> v;
+        v.push_back(str.length());
         
-        string temp="";
-        for(int i=k;i<str.length();i++)
+        for(int i=str.length();i>=0;i--)
         {
-            temp+=str[i];
-            if(s.find(temp)!=s.end() and isConcatenated(str,s,i+1)) return true;
+            for(int data:v)
+            {
+                if(s.find(str.substr(i,data-i))!=s.end())
+                {
+                    v.push_back(i);
+                    break;
+                }
+            }
         }
         
-        return false;
+        return v[v.size()-1]==0;
     }
     
 public:
@@ -25,7 +31,7 @@ public:
         for(string str:words)
         {
             s.erase(str);
-            if(isConcatenated(str,s,0)) v.push_back(str);
+            if(isConcatenated(str,s)) v.push_back(str);
             s.insert(str);
         }
         
