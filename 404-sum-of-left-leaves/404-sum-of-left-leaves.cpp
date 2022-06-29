@@ -23,7 +23,7 @@ class Solution {
     }
     
 public:
-    int sumOfLeftLeaves(TreeNode* root) {
+    int sumOfLeftLeaves(TreeNode* &root) {
         return solve(root,false);
     }
 };
