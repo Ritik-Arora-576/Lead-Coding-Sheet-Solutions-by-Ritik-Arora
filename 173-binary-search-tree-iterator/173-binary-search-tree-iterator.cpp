@@ -23,7 +23,7 @@ class BSTIterator {
     }
     
 public:
-    BSTIterator(TreeNode* root) {
+    BSTIterator(TreeNode* &root) {
         store(root);
         this->i=0;
         
