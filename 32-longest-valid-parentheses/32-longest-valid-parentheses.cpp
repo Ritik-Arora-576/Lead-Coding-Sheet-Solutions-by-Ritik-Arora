@@ -1,12 +1,8 @@
-// Stack Based Solution
-// TC: O(N)
-// SC: O(N)
-
 class Solution {
 public:
     int longestValidParentheses(string str) {
-        int ans=0;
         stack<int> s;
+        int ans=0;
         
         for(int i=0;i<str.length();i++)
         {
@@ -14,11 +10,8 @@ public:
             else
             {
                 s.pop();
-                int temp=0;
-                if(s.empty()) temp=i+1;
-                else temp=i-s.top();
-                
-                ans=max(ans,temp);
+                if(!s.empty()) ans=max(ans,i-s.top());
+                else ans=max(ans,i+1);
             }
         }
         
