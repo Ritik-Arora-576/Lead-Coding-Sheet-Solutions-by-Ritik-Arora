@@ -1,21 +1,14 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution {
-    bool dfs(vector<bool> &visited,vector<int> graph[],int i,int par)
-    {
-        visited[i]=true;
-        
-        for(int children:graph[i])
-        {
-            if(!visited[children]) 
-            {
-                if(dfs(visited,graph,children,i)) 
-                return true;
-            }
-            else if(children!=par) return true;
+    bool dfs(vector<int> adj[], vector<bool> &visited, int src, int parent){
+        visited[src]=true;
+        for(int node:adj[src]){
+            if(visited[node] and node!=parent) return true;
+            if(!visited[node] and dfs(adj, visited, node, src)) return true;
         }
         
         return false;
@@ -24,21 +17,18 @@ class Solution {
   public:
     // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
-        // Code here
-        
-        vector<bool> visited(V,false);
-        
-        for(int i=0;i<V;i++)
-        {
-            if(!visited[i])
-                if(dfs(visited,adj,i,-1)) return true;
+        vector<bool> visited(V, false);
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                bool status = dfs(adj, visited, i, -1);
+                if(status) return true;
+            }
         }
-        
         return false;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() {
     int tc;
     cin >> tc;
@@ -60,4 +50,5 @@ int main() {
             cout << "0\n";
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
