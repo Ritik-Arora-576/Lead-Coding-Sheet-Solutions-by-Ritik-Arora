@@ -4,20 +4,20 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    bool dfs(vector<int> adj[], vector<bool> &visited, int src, int parent){
+    bool dfs(vector<int> *adj, vector<bool> &visited, int src, int parent){
         visited[src]=true;
         for(int node:adj[src]){
             if(visited[node] and node!=parent) return true;
-            if(!visited[node] and dfs(adj, visited, node, src)) return true;
+            if(!visited[node] and dfs(adj,visited,node,src)) return true;
         }
-        
         return false;
     }
     
   public:
     // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
-        vector<bool> visited(V, false);
+        // Code here
+        vector<bool> visited(V,false);
         for(int i=0;i<V;i++){
             if(!visited[i]){
                 bool status = dfs(adj, visited, i, -1);
